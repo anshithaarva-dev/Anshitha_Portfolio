@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Sri Anshitha Arva</title>
+    <link rel="stylesheet" href="styles\style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Sri. Arva</li>
+                <div class="nav-buttons">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="resume.pdf" download>Resume</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Contact Me</h2>
+        </section>
+
+        <section>
+            <form name="contactForm" onsubmit="return validateForm()" onreset="resetErrors()">
+                <article>
+                    <h4>Your Name</h4>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    <span id="name-error" class="error-message"></span>
+                </article>
+
+                <article>
+                    <h4>Your Email</h4>
+                    <input type="email" id="email" name="email" placeholder="Email address" required>
+                    <span id="email-error" class="error-message"></span>
+                </article>
+
+                <article>
+                    <h4>Message</h4>
+                    <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                    <span id="message-error" class="error-message"></span>
+                </article>
+
+                <article>
+                    <button type="submit" class="button">Send Message</button>
+                    <button type="reset" class="button">Reset</button>
+                </article>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            const nameErr = document.getElementById("name-error");
+            const emailErr = document.getElementById("email-error");
+            const messageErr = document.getElementById("message-error");
+
+            // Clear previous error messages
+            nameErr.textContent = "";
+            emailErr.textContent = "";
+            messageErr.textContent = "";
+
+            let isValid = true;
+
+            // Name validation - must not be empty and only alphabets allowed
+            if (name === "" || !/^[A-Za-z\s]+$/.test(name)) {
+                nameErr.textContent = "Please enter your name using only letters and spaces.";
+                isValid = false;
+            }
+
+            // Email validation - must contain @ and .
+            if (email === "" || !email.includes("@") || !email.includes(".")) {
+                emailErr.textContent = "Please enter a valid email address.";
+                isValid = false;
+            }
+
+            // Message validation - must not be empty, minimum length, and word limit
+            if (message === "" || message.length < 10) {
+                messageErr.textContent = "Please enter a message with at least 10 characters.";
+                isValid = false;
+            } else if (message.split(/\s+/).length > 120) {
+                messageErr.textContent = "Message cannot exceed 120 words.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Form submitted successfully! Thank you for your message.");
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function resetErrors() {
+            document.getElementById("name-error").textContent = "";
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("message-error").textContent = "";
+        }
+    </script>
+</body>
+
+</html>

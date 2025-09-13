@@ -1,0 +1,120 @@
+##There were no comments in this sinnpet of code from geeksforgeeks.com. I will be critiquing the code using comments 
+## One thing that I reliazed is that the form validation is very basic
+<html>
+<head>
+</head>
+<body>
+    <h1>REGISTRATION FORM</h1>
+    <form name="RegForm" onsubmit="return validateForm()" onreset="resetErrors()">
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="Name" placeholder="Enter your full name" />
+            <span id="name-error" class="error-message"></span>
+        </p>
+        <p>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="Address" placeholder="Enter your address" />
+            <span id="address-error" class="error-message"></span>
+        </p>
+        <p>
+            <label for="email">E-mail Address:</label>
+            <input type="text" id="email" name="EMail" placeholder="Enter your email" />
+            <span id="email-error" class="error-message"></span>
+        </p>
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="Password" />
+            <span id="password-error" class="error-message"></span>
+        </p>
+        <p>
+            <label for="subject">Select Your Course:</label>
+            <select id="subject" name="Subject">
+                <option value="">Select Course</option>
+                <option value="BTECH">BTECH</option>
+                <option value="BBA">BBA</option>
+                <option value="BCA">BCA</option>
+                <option value="B.COM">B.COM</option>
+            </select>
+            <span id="subject-error" class="error-message"></span>
+        </p>
+        <p>
+            <label for="comment">College Name:</label>
+            <textarea id="comment" name="Comment"></textarea>
+        </p>
+        <p>
+            <input type="checkbox" id="agree" name="Agree" />
+            <label for="agree">I agree to the above information</label>
+            <span id="agree-error" class="error-message"></span>
+        </p>
+        <p>
+            <input type="submit" value="Send" name="Submit" />
+            <input type="reset" value="Reset" name="Reset" />
+        </p>
+    </form>
+    <script>
+        function validateForm() {
+            const name = document.getElementById("name").value; //Storing the value from the main input which it will then double check 
+            const addr = document.getElementById("address").value;
+            const email = document.getElementById("email").value;
+            const pass = document.getElementById("password").value;//not adding encryption is a problem with things such as passwords
+            const sub = document.getElementById("subject").value;
+            const agree = document.getElementById("agree").checked;
+
+            const nameErr = document.getElementById("name-error"); //This is assinging error messages so the script can just return the stored value in nameErr
+            const addrErr = document.getElementById("address-error");
+            const emailErr = document.getElementById("email-error");
+            const passErr = document.getElementById("password-error");
+            const subErr = document.getElementById("subject-error");
+            const agreeErr = document.getElementById("agree-error");
+
+            nameErr.textContent = "";
+            addrErr.textContent = "";
+            emailErr.textContent = "";
+            passErr.textContent = "";
+            subErr.textContent = "";
+            agreeErr.textContent = "";
+
+            let isValid = true;//stays true unless one of these are triggered 
+            if (name === "" || /\d/.test(name)) {//the user can use weird characters which is unwanted 
+                nameErr.textContent = "Please enter your name properly."; // going to return this message if the name is blank or if there are digits in the input
+                isValid = false;
+            }
+            if (addr === "") {//the user can use weird characters which is unwanted 
+                addrErr.textContent = "Please enter your address.";// going to return this message if the input is blank
+                isValid = false;
+            }
+            if (email === "" || !email.includes("@") || !email.includes(".")) {
+                emailErr.textContent = "Please enter a valid email address.";// going to return this message if the input is blank and the input must contain a @ and a . 
+                isValid = false;
+            }
+            if (pass === "" || pass.length < 6) { //Maybe set some requirements for the password 
+                passErr.textContent = "Please enter a password with at least 6 characters."; //going to return this message if the input is blank or the password is not long enough
+                isValid = false;
+            }
+            if (sub === "") {
+                subErr.textContent = "Please select your course."; //going to return this message if the input is blank
+                isValid = false;
+            }
+            if (!agree) {
+                agreeErr.textContent = "Please agree to the above information."; //the user has to agree
+                isValid = false;
+            }
+            if (isValid) { //if none of above conditions are triggered, then the form will be submitted and return the message 
+                alert("Form submitted successfully!");
+                return true;
+            } else {//this is not needed 
+                return false; 
+            }
+        }
+
+        function resetErrors() { //would have never thought to reset the errors after the form has been reset 
+            document.getElementById("name-error").textContent = "";
+            document.getElementById("address-error").textContent = "";
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("password-error").textContent = "";
+            document.getElementById("subject-error").textContent = "";
+            document.getElementById("agree-error").textContent = "";
+        }
+    </script>
+</body>
+</html>
