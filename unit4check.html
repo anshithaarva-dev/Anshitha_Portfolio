@@ -2,9 +2,39 @@
 ## One thing that I reliazed is that the form validation is very basic
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form - Unit 4 Check</title>
+    <link rel="stylesheet" href="styles\style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
-    <h1>REGISTRATION FORM</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Sri. Arva</li>
+                <div class="nav-buttons">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="resume.pdf" download>Resume</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><button id="mode-button" class="modeToggle"></button></li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Joke Section -->
+    <section id="joke-container" class="joke-section">
+        <!-- Joke will be loaded here by JavaScript -->
+    </section>
+
+    <main>
+        <section>
+            <h1>REGISTRATION FORM</h1>
     <form name="RegForm" onsubmit="return validateForm()" onreset="resetErrors()">
         <p>
             <label for="name">Name:</label>
@@ -51,6 +81,8 @@
             <input type="reset" value="Reset" name="Reset" />
         </p>
     </form>
+        </section>
+    </main>
     <script>
         function validateForm() {
             const name = document.getElementById("name").value; //Storing the value from the main input which it will then double check 
@@ -115,6 +147,23 @@
             document.getElementById("subject-error").textContent = "";
             document.getElementById("agree-error").textContent = "";
         }
+    </script>
+    <script src="scripts/dark-mode.js"></script>
+    <script src="scripts/sticky-nav.js"></script>
+    <!-- JokeAPI JavaScript Wrapper -->
+    <script src="https://unpkg.com/sv443-joke-api@0.0.8/web/index.js"></script>
+    <script>
+        // Basic JokeAPI usage - following the repository example
+        JokeAPI.getJokes()
+            .then((res) => res.json())
+            .then((data) => {
+                document.getElementById('joke-container').innerHTML = `
+                    <div class="joke-container">
+                        <h3>Daily Joke 😄</h3>
+                        <p class="joke-text">${data.joke || data.setup + ' ' + data.delivery}</p>
+                    </div>
+                `;
+            });
     </script>
 </body>
 </html>

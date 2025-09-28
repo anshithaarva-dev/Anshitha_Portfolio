@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact - Sri Anshitha Arva</title>
     <link rel="stylesheet" href="styles\style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 
 <body>
@@ -22,6 +21,8 @@
                     <li><a href="skills.html">Skills</a></li>
                     <li><a href="resume.pdf" download>Resume</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><button id="mode-button" class="modeToggle"></button></li>
                 </div>
             </ul>
         </nav>
@@ -33,22 +34,23 @@
         </section>
 
         <section>
-            <form name="contactForm" onsubmit="return validateForm()" onreset="resetErrors()">
+            <!-- Contact form - TODO: maybe add some styling later -->
+            <form name="contactForm" onsubmit="return checkFormData()" onreset="clearAllErrors()">
                 <article>
                     <h4>Your Name</h4>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    <input type="text" id="userName" name="name" placeholder="Enter your full name" required>
                     <span id="name-error" class="error-message"></span>
                 </article>
 
                 <article>
                     <h4>Your Email</h4>
-                    <input type="email" id="email" name="email" placeholder="Email address" required>
+                    <input type="email" id="userEmail" name="email" placeholder="Email address" required>
                     <span id="email-error" class="error-message"></span>
                 </article>
 
                 <article>
                     <h4>Message</h4>
-                    <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                    <textarea id="userMessage" name="message" placeholder="Type your message here..." required></textarea>
                     <span id="message-error" class="error-message"></span>
                 </article>
 
@@ -61,57 +63,80 @@
     </main>
 
     <script>
-        function validateForm() {
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const message = document.getElementById("message").value;
+        // Form validation - this could probably be refactored but it works fine for now
+        function checkFormData() {
+            // Get all the input values
+            var nameInput = document.getElementById("userName").value;
+            var emailInput = document.getElementById("userEmail").value;  
+            var messageInput = document.getElementById("userMessage").value;
 
-            const nameErr = document.getElementById("name-error");
-            const emailErr = document.getElementById("email-error");
-            const messageErr = document.getElementById("message-error");
+            // Get error display elements
+            var nameError = document.getElementById("name-error");
+            var emailError = document.getElementById("email-error");
+            var messageError = document.getElementById("message-error");
 
-            // Clear previous error messages
-            nameErr.textContent = "";
-            emailErr.textContent = "";
-            messageErr.textContent = "";
+            // Reset all errors first
+            nameError.textContent = "";
+            emailError.textContent = "";
+            messageError.textContent = "";
 
-            let isValid = true;
+            var formIsValid = true;
 
-            // Name validation - must not be empty and only alphabets allowed
-            if (name === "" || !/^[A-Za-z\s]+$/.test(name)) {
-                nameErr.textContent = "Please enter your name using only letters and spaces.";
-                isValid = false;
+            // Check name - I think this regex is fine, covers most cases
+            if (nameInput === "" || nameInput.trim() === "") {
+                nameError.textContent = "Please enter your name using only letters and spaces.";
+                formIsValid = false;
+            } else if (!/^[A-Za-z\s]+$/.test(nameInput)) {
+                nameError.textContent = "Please enter your name using only letters and spaces.";
+                formIsValid = false;
             }
 
-            // Email validation - must contain @ and .
-            if (email === "" || !email.includes("@") || !email.includes(".")) {
-                emailErr.textContent = "Please enter a valid email address.";
-                isValid = false;
+            // Email validation - basic check should be enough
+            if (emailInput === "") {
+                emailError.textContent = "Please enter a valid email address.";
+                formIsValid = false;
+            } else if (!emailInput.includes("@") || !emailInput.includes(".")) {
+                emailError.textContent = "Please enter a valid email address.";
+                formIsValid = false;
             }
 
-            // Message validation - must not be empty, minimum length, and word limit
-            if (message === "" || message.length < 10) {
-                messageErr.textContent = "Please enter a message with at least 10 characters.";
-                isValid = false;
-            } else if (message.split(/\s+/).length > 120) {
-                messageErr.textContent = "Message cannot exceed 120 words.";
-                isValid = false;
+            // Message validation
+            if (messageInput === "") {
+                messageError.textContent = "Please enter a message with at least 10 characters.";
+                formIsValid = false;
+            } else if (messageInput.length < 10) {
+                messageError.textContent = "Please enter a message with at least 10 characters.";
+                formIsValid = false;
+            } else {
+                // Check word count - split by spaces and filter empty strings
+                var wordCount = messageInput.split(/\s+/).filter(function(word) {
+                    return word.length > 0;
+                }).length;
+                
+                if (wordCount > 120) {
+                    messageError.textContent = "Message cannot exceed 120 words.";
+                    formIsValid = false;
+                }
             }
 
-            if (isValid) {
+            // If everything looks good, show success message
+            if (formIsValid) {
                 alert("Form submitted successfully! Thank you for your message.");
                 return true;
             } else {
-                return false;
+                return false;  // Prevent form submission
             }
         }
 
-        function resetErrors() {
+        // Reset function - clears all error messages
+        function clearAllErrors() {
             document.getElementById("name-error").textContent = "";
             document.getElementById("email-error").textContent = "";
             document.getElementById("message-error").textContent = "";
         }
     </script>
+    <script src="scripts/dark-mode.js"></script>
+    <script src="scripts/sticky-nav.js"></script>
 </body>
 
 </html>

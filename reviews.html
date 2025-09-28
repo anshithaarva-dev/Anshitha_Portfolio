@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reviews - Sri Anshitha Arva</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+//a
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Sri. Arva</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="resume.pdf" download>Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><button id="mode-button" class="modeToggle"></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="joke-container" class="joke-section"></section>
+
+    <main>
+
+        <section id="review-form-section">
+            <h3>Leave a Review</h3>
+            <form name="reviewForm" onsubmit="return handleReviewSubmission()">
+                <div class="form-group">
+                    <h4>Your Name</h4>
+                    <input type="text" id="reviewer_name" name="name" required>
+                    <span id="nameError" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <h4>Your Title/Company (Optional)</h4>
+                    <input type="text" id="reviewer_title" name="title">
+                </div>
+
+                <div class="form-group">
+                    <h4>Rating</h4>
+                    <select id="review_rating" name="rating" required>
+                        <option value="">Choose your rating</option>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="1">⭐</option>
+                    </select>
+                    <span id="ratingError" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <h4>Your Review</h4>
+                    <textarea id="review_text" name="review" rows="4" required></textarea>
+                    <span id="reviewError" class="error-message"></span>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="button" class="clear-btn" onclick="clearEverything()">Clear</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        function handleReviewSubmission() {
+            let reviewerName = document.getElementById("reviewer_name").value;
+            let reviewerTitle = document.getElementById("reviewer_title").value;
+            let rating = document.getElementById("review_rating").value;
+            let reviewContent = document.getElementById("review_text").value;
+
+            let nameErrorElement = document.getElementById("nameError");
+            let ratingErrorElement = document.getElementById("ratingError");
+            let reviewErrorElement = document.getElementById("reviewError");
+
+            nameErrorElement.textContent = "";
+            ratingErrorElement.textContent = "";
+            reviewErrorElement.textContent = "";
+            //https://formester.com/blog/how-to-make-feedback-form-in-html
+            let validationFailed = false;
+
+            if (!reviewerName) {
+                nameErrorElement.textContent = "Please enter your name.";
+                validationFailed = true;
+            }
+
+            if (!rating) {
+                ratingErrorElement.textContent = "Please select a rating.";
+                validationFailed = true;
+            }
+
+            if (!reviewContent) {
+                reviewErrorElement.textContent = "Please enter your review.";
+                validationFailed = true;
+            } else if (reviewContent.length < 10) {
+                reviewErrorElement.textContent = "Minimum 10 characters.";
+                validationFailed = true;
+            }
+
+            if (!validationFailed) {
+                addReviewToPage(reviewerName, reviewerTitle, rating, reviewContent);
+                resetForm();
+                alert("Thanks for the review!");
+            }
+
+            return false;
+        }
+
+        function addReviewToPage(name, title, starRating, review) {
+            let reviewSection = document.getElementById("reviews-display");
+            let reviewCard = document.createElement("div");
+            reviewCard.className = "user-review";
+            //My brother also helped me integrate the reviews in the page by adding it at the top of the page
+            reviewCard.innerHTML =
+                "<h4>" + name + "</h4>" +
+                (title ? "<p>" + title + "</p>" : "") +
+                "<p>" + "⭐".repeat(parseInt(starRating)) + "</p>" +
+                "<p>" + review + "</p>";
+
+            // Add to page
+            reviewSection.appendChild(reviewCard);
+        }
+
+        function resetForm() {
+            document.getElementById("reviewer_name").value = "";
+            document.getElementById("reviewer_title").value = "";
+            document.getElementById("review_rating").value = "";
+            document.getElementById("review_text").value = "";
+        }
+
+        //https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Form_validation-- Need to add a reference 
+        //https://www.w3schools.com/js/js_validation.asp
+    </script>
+
+    <script src="scripts/dark-mode.js"></script>
+    <script src="scripts/sticky-nav.js"></script>
+</body>
+
+</html>

@@ -5,106 +5,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skills - Sri Anshitha Arva</title>
+    <!-- Css refrence -->
     <link rel="stylesheet" href="styles\style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> <!-- jQuery -->
+    <script src="https://unpkg.com/sv443-joke-api@0.0.8/web/index.js"></script><!-- JokeAPI  -->
+    <script src="scripts/sticky-nav.js"></script>
 </head>
+
+<script>
+    // https://github.com/sahithyandev/sv443-joke-api-js-wrapper?tab=readme-ov-file#readme
+    //https://codepen.io/sahith27/pen/QWEPwPg
+    //Code from both of these sources were used to create this joke api requrest
+    JokeAPI.getJokes()
+        .then((res) => res.json())
+        .then((data) => {
+            document.getElementById('joke-container').innerHTML = `
+                <div class="joke-container">
+                    <h3>Daily Joke 😄</h3>
+                    <p class="joke-text">${data.joke || data.setup + ' ' + data.delivery}</p>
+                </div>
+            `;
+        });
+</script>
 
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Sri. Arva</li>
-                <div class="nav-buttons">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="resume.pdf" download>Resume</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </div>
+                <li><a href="index.html">Sri. Arva</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="resume.pdf" download>Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <!-- Need to add a proper icon -->
+                <li><button id="mode-button" class="modeToggle"></button></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <section id="joke-container" class="joke-section">
+        <!-- This gets populated by the joke API script -->
+    </section>
 
-        <section>
+    <main>
+        <!-- Skills section - organized by categories for better readability -->
+        <section class="skills-category">
             <h3>Programming Languages</h3>
-            
+
             <article id="python">
                 <h4>Python</h4>
-                <p>I know Python pretty well. I can write programs to analyze data, make simple apps, and automate tasks. I've used libraries like pandas, numpy, matplotlib, and scikit-learn for data analysis projects.</p>
+                <p>I know Python pretty well - it's actually my favorite language! I can write programs to analyze data,
+                    make simple apps, and automate boring stuff. I've used libraries like pandas, numpy, matplotlib, and
+                    scikit-learn for various data analysis projects. Still learning new things about it every day
+                    though.</p>
             </article>
 
             <article id="html">
                 <h4>HTML</h4>
-                <p>I can make web pages using HTML. I know how to create headings, paragraphs, links, images, and organize content into sections. I'm still learning but I can make basic websites.</p>
+                <p>I can make web pages using HTML. I know how to create headings, paragraphs, links, images, and
+                    organize content into sections. I'm still learning but I can make basic websites that actually look
+                    decent.</p>
             </article>
 
             <article id="css">
                 <h4>CSS</h4>
-                <p>I can style web pages with CSS. I know how to change colors, fonts, spacing, and layout. I can make things look nice and organized. I'm learning about flexbox and responsive design.</p>
+                <p>I can style web pages with CSS - sometimes it drives me crazy with the positioning stuff, but I'm
+                    getting better at it. I know how to change colors, fonts, spacing, and layout. I can make things
+                    look nice and organized. Currently learning about flexbox and responsive design (grid is next on my
+                    list!).</p>
             </article>
 
-            <article id="Js">
+            <article id="javascript"> <!-- Fixed the ID naming - was inconsistent before -->
                 <h4>JavaScript</h4>
-                <p>I'm learning JavaScript to make websites interactive. I can add simple functions, handle user input, and make basic animations. I'm still a beginner but I'm getting better.</p>
+                <p>I'm learning JavaScript to make websites interactive. I can add simple functions, handle user input,
+                    and make basic animations. Still a beginner but getting more comfortable with it each day. The async
+                    stuff still confuses me sometimes though.</p>
             </article>
         </section>
 
-        <section>
+        <section class="skills-category">
             <h3>Data Analysis Tools</h3>
-            
+
             <article id="tableau">
                 <h4>Tableau</h4>
-                <p>I can use Tableau to make charts and dashboards. I can connect to data sources, create different types of visualizations, and make interactive reports. I've used it for several school projects.</p>
+                <p>I can use Tableau to make charts and dashboards - love how visual it is! I can connect to different
+                    data sources, create various types of visualizations, and make interactive reports. I've used it for
+                    several school projects and it always impresses people.</p>
             </article>
 
             <article id="excel">
                 <h4>Excel</h4>
-                <p>I'm good at using Excel for data analysis. I can use formulas, pivot tables, charts, and basic data cleaning. I use it a lot for organizing and analyzing data.</p>
+                <p>I'm pretty good at using Excel for data analysis. I can use formulas (VLOOKUP is my friend), pivot
+                    tables, charts, and basic data cleaning. I use it all the time for organizing and analyzing data.
+                    It's not the fanciest tool but it gets the job done.</p>
             </article>
 
             <article id="sql">
                 <h4>SQL</h4>
-                <p>I know basic SQL to work with databases. I can write simple queries to get data, filter results, and join tables. I'm still learning more advanced SQL features.</p>
+                <p>I know basic SQL to work with databases. I can write simple queries to get data, filter results, and
+                    join tables. Still learning more advanced SQL features - window functions are on my todo list!</p>
             </article>
         </section>
 
-        <section>
+        <section class="skills-category">
             <h3>Other Skills</h3>
-            
-            <article id="Git">
+
+            <article id="git"> <!-- Made ID consistent with lowercase -->
                 <h4>Git & GitHub</h4>
-                <p>I can use Git to save different versions of my code. I know basic commands like commit, push, pull, and merge. I use GitHub to share my projects and collaborate with others.</p>
+                <p>I can use Git to save different versions of my code - lifesaver when things break! I know basic
+                    commands like commit, push, pull, and merge. I use GitHub to share my projects and collaborate with
+                    others. Still getting used to branching and merge conflicts though.</p>
             </article>
 
-            <article id="problem">
+            <article id="problem-solving"> <!-- More descriptive ID -->
                 <h4>Problem Solving</h4>
-                <p>I like solving problems and figuring out how things work. I can break down complex problems into smaller parts and find solutions step by step.</p>
+                <p>I really enjoy solving problems and figuring out how things work - it's like solving puzzles! I can
+                    break down complex problems into smaller, manageable parts and find solutions step by step.
+                    Sometimes I overthink things, but I usually get there in the end.</p>
             </article>
 
-            <article id="comm">
+            <article id="communication"> <!-- Expanded the ID -->
                 <h4>Communication</h4>
-                <p>I can explain technical concepts in simple terms. I can write clear documentation and present my findings to others. I work well in teams and can help others understand what I'm working on.</p>
+                <p>I can explain technical concepts in simple terms (my family is my test audience for this!). I can
+                    write clear documentation and present my findings to others. I work well in teams and genuinely
+                    enjoy helping others understand what I'm working on.</p>
             </article>
         </section>
-
-        <section>
-            <h3>Currently Learning</h3>
-            <article id="ml">
-                <h4>Machine Learning</h4>
-                <p>I'm interested in machine learning and want to learn more about it. I've done some basic projects but I want to understand the theory better and try more advanced techniques.</p>
-            </article>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Name: Sri Anshitha Arva</p>
-        <p>Email: <a href="mailto:">Anshitha's Email</a></p>
-        <p>Location: Calgary, Alberta, Canada</p>
-    </section>
-</main>
+    </main>
+    
+    <!-- Scripts loaded at bottom to ensure DOM is ready -->
+    <script src="scripts/dark-mode.js"></script>
 </body>
 
 </html>

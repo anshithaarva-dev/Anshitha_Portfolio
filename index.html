@@ -1,154 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sri Anshitha Arva Portfolio</title>
-    <link rel="stylesheet" href="styles\style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Sri Anshitha Arva - Portfolio</title>
+    <!-- Css refrence -->
+    <link rel="stylesheet" href="styles/style.css" />
+    <!-- jQuery links -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> <!-- jQuery -->
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script> <!-- jQuery accordion -->
+    <script src="scripts/dark-mode.js"></script> <!-- Dark mode  -->
+    <script src="scripts/sticky-nav.js"></script> <!-- Sticky nav bar-->
+     <!-- Set up for accordion -->
+    <script>
+    $(document).ready(function() {
+      $("#accordion").accordion({ 
+        collapsible: true,
+        active: false,  // Start with all sections closed
+        heightStyle: "content"
+      });
+    });
+    //openjsf.org, O. F.-. (n.d.). Accordion. jQuery UI. https://jqueryui.com/accordion/ 
+    </script>
 </head>
 
-
-<header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Sri. Arva</li>
-            <div class="nav-buttons">
-                <li><a href="index.html">Home</a></li>
-                <li><a href=#about>About</a></li>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Sri. Arva</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="skills.html">Skills</a></li>
                 <li><a href="resume.pdf" download>Resume</a></li>
                 <li><a href="contact.html">Contact</a></li>
-            </div>
-        </ul>
-    </nav>
-
-</header>
-
-<body>
+                <li><a href="reviews.html">Reviews</a></li>
+                <!-- Dark/Light mode toggle -->
+                <li><button id="mode-button" class="modeToggle">Dark Mode</button></li>
+            </ul>
+        </nav>
+    </header>
+    
     <main>
-        <section class="main-banner">
-            <div class="main-ban-text">
-                <p>I am</p>
-                <h2>Sri. Anshitha Arva</h2>
-                <p>​4th YEAR CIS STUDENT MOUNT ROYAL UNIVERSITY</p <img src="images\mru-logo.webp" />
-                </p>
-            </div>
-            <div class="main-ban-img">
+        <!-- Main Banner with intro and pic -->
+        <section class="main-section">
+            <div class="main-sec-text">
+                <h2>I am</h2>
+                <!-- Need to add a photo of myself -->
                 <img src="IMG-20250421-WA0000.jpg" alt="Sri Anshitha Arva Photo" />
+                <h2>Sri. Anshitha Arva</h2>
+                <p>4th YEAR CIS STUDENT MOUNT ROYAL UNIVERSITY </p>
             </div>
+                <img src="images/mru-logo.webp" alt="MRU Logo" />
         </section>
 
         <section id="about">
             <h2>About Me</h2>
-            <p>I'm a second-year Computer Information Systems student with a passion for data, design, and development.
-                I've
-                built several end-to-end projects using Kaggle datasets, Tableau for insightful visualizations, and
-                developed
-                complex apps using Python, HTML, and JavaScript. Whether it's analyzing trends or creating full-stack
-                applications, I love solving real-world problems through tech.</p>
+            <!-- Proffesional summary form my resume-->
+            <p>I'm a fourth-year Computer Information Systems student with a passion for data, design, and development.
+                I've built several end-to-end projects using Kaggle datasets, created insightful visualizations with Tableau, 
+                and developed complex applications using Python, HTML, and JavaScript. Whether it's analyzing trends or 
+                creating full-stack applications, I love solving real-world problems through technology.</p>
         </section>
 
+        <!-- Projects -->
         <section id="projects">
-            <h2>Projects</h2>
-            <h3>Tableau</h3>
+            <h2>Data Visualization & Analysis Projects</h2>
+            <h3></h3>
             <article id="iphone16">
-                <h4>Iphone 16 Review Analysis Based on Youtube Comments</h4>
+                <h4>iPhone 16 Review Analysis Based on YouTube Comments</h4>
                 <p>Analyzed public reception of the iPhone 16 Pro by scraping and preprocessing YouTube comments using
-                    Python.
-                    Applied VADER sentiment analysis to classify viewer sentiment and used topic modeling (LDA) and
-                    clustering
-                    (Sentence-BERT) to identify key discussion themes. Visualized results with Tableau to uncover
-                    consumer sentiment
-                    trends and product perception insights.</p>
-                <a href="https://www.kaggle.com/code/abivansharva/iphone-16-release-analysis-based-on-yt-video-comme"
-                    target="_blank" class="button">View Project</a>
+                    Python. Applied VADER sentiment analysis to classify viewer sentiment and used topic modeling (LDA) and
+                    clustering (Sentence-BERT) to identify key discussion themes. Visualized results with Tableau to uncover
+                    consumer sentiment trends and product perception insights.</p>
             </article>
+            
             <article id="tourism">
                 <h4>Global Tourism Analysis</h4>
-                <p>Along with the UN Tourism and the World Travel & Tourism Council, I analyzed and explored the
-                    provided datasets
-                    regarding global tourism. For data cleansing and data visualization, I used Python, and I also
-                    forecasted
-                    post-pandemic recovery trajectories using time-series forecasting models. Recognized noteworthy
-                    tendencies like
-                    the comeback of international trips, mounting sustainable tourism, and the effect of digitization on
-                    traveler's
-                    behavioral shift. Leveraged interactive dashboards to share findings which facilitated the strategic
-                    planning
-                    tourism industry.</p>
-                <a href="https://www.kaggle.com/code/abivansharva/global-tourism-trends-2015-2019-a-data-driven-a"
-                    target="_blank" class="button">View Project</a>
+                <p>Working with UN Tourism and the World Travel & Tourism Council datasets, I analyzed and explored
+                    global tourism patterns. Used Python for data cleansing and visualization, and also forecasted
+                    post-pandemic recovery trajectories using time-series models. Identified key trends like the
+                    recovery of international travel, growing sustainable tourism interest, and digitization's impact on
+                    traveler behavior. Created interactive dashboards to present findings for strategic tourism industry
+                    planning.</p>
             </article>
-
-            <h3>Programming Applications</h3>
-            <article id="RadiantYou">
-<h3>RadiantYou</h3>
-                <p>Developed a programming application designed for AI technology to bridge the gap between customers
-                    and brands, offering a virtual makeup assistant that provides realistic previews of makeup looks and
-                    personalized product recommendations tailored to individual users. The applications automate tasks,
-                    process and analyze data, and provide user-friendly tools to simplify workflows and decision-making.
-                    Built full-stack solutions using Python for backend logic and data handling, and HTML, CSS, and
-                    JavaScript for interactive front-ends. Applied best practices in debugging, error handling, and code
-                    optimization to ensure reliable and maintainable applications. Users can leverage these tools to
-                    streamline repetitive tasks, gain actionable insights from data, and interact with intuitive
-                    software interfaces for everyday tasks.
+        </section>
+<!--Coding Projects-->
+        <section>
+            <h2>Programming Applications</h3>
+                <article id="RadiantYou">
+                <h4>RadiantYou</h4>
+                <p>Developed an AI-powered application that bridges the gap between customers and beauty brands by
+                    offering a virtual makeup assistant. The app provides realistic makeup previews and personalized
+                    product recommendations tailored to individual users. Built using Python for backend processing
+                    and data analysis, with HTML, CSS, and JavaScript creating an interactive frontend experience.
+                    Focused on debugging, error handling, and code optimization to ensure reliable performance.
+                    The application helps users streamline beauty choices and get personalized recommendations.
                 </p>
-                <a href="" target="_blank" class="button">View
-                    Project</a>
+                <!-- The website is not up and running right now -->
+                <a href="#" >View Project</a>
             </article>
+            
             <article id="Personal.Ai">
-                <h3>Personal.Ai</h3>
+                <h4>Personal.Ai</h4>
                 <p>
                     Designed and managed AI-driven projects to enhance creative writing, business automation, and
-                    customer service workflows. Implemented ChatGPT and virtual assistants to improve operational
-                    efficiency and client interactions, while developing client-facing solutions that streamline
+                    customer service workflows. Implemented ChatGPT integration and virtual assistants to improve
+                    operational efficiency and client interactions. Developed client-facing solutions that streamline
                     communication, automate repetitive tasks, and deliver actionable insights. Maintained detailed
-                    project roadmaps, conducted progress reviews, and ensured alignment with client requirements,
-                    timelines, and measurable outcomes</p>
+                    project roadmaps and conducted regular progress reviews to ensure alignment with client requirements
+                    and deliverables.
+                </p>
             </article>
         </section>
 
+        <!-- Work experience  -->
         <section id="work-experience">
             <h2>Professional Experience</h2>
+            
             <article id="Marsh">
                 <h3>Project Manager</h3>
-                <p>Marsham INC</p>
-                <p>Led end-to-end project management for internal and client initiatives, delivering on time while
-                    introducing automation tools to cut reporting time. Optimized workflows as a Salesforce Execution
-                    power user and applied advanced data analysis to improve efficiency. Partnered with QA teams to test
-                    and validate features, ensuring quality before release. Built and maintained live project reports,
-                    executive summaries, and AR reports for senior management, while managing project plans, timelines,
-                    and budgets.</p>
+                <h4>Marsham INC</h4>
+                <p>Led end-to-end project management for internal and client initiatives, consistently delivering on time
+                    while introducing automation tools that reduced reporting time significantly. Worked as a Salesforce
+                    power user to optimize workflows and applied advanced data analysis techniques to improve operational
+                    efficiency. Collaborated with QA teams to test and validate features before release. Created and
+                    maintained live project reports, executive summaries, and AR reports for senior management while
+                    managing project plans, timelines, and budgets.</p>
             </article>
+            
             <article id="spar">
                 <h3>Merchandiser</h3>
-                <p>Spar Merchandising</p>
-                <p>Conducted audits of in-store displays for major brands in big box retailers such as Walmart and
-                    Save-On-Foods.
-                    Verified compliance with merchandising standards, planograms, and promotional guidelines, while
-                    reporting on
-                    display condition, placement accuracy, and inventory levels</p>
+                <h4>Spar Merchandising</h4>
+                <p>Conducted comprehensive audits of in-store displays for major brands in big box retailers including
+                    Walmart and Save-On-Foods. Verified compliance with merchandising standards, planograms, and
+                    promotional guidelines. Provided detailed reporting on display condition, placement accuracy, and
+                    inventory levels to ensure brand standards were consistently met.</p>
             </article>
+            
             <article id="RBC">
-                <h3>Senior Banking Advisor </h3>
-                <p>Royal Bank of Canada </p>
+                <h3>Senior Banking Advisor</h3>
+                <h4>Royal Bank of Canada</h4>
                 <p>Delivered personalized financial solutions and addressed complex client needs, driving product
-                    adoption and boosting retention by 15%. Leveraged CRM systems to manage client data securely and
-                    ensure compliance. Mentored new team members, promoting best practices in client relationship
-                    management and support.</p>
+                    adoption and boosting client retention by 15%. Used CRM systems extensively to manage client data
+                    securely while ensuring regulatory compliance. Mentored new team members and promoted best practices
+                    in client relationship management and customer support.</p>
             </article>
         </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Name: Sri Anshitha Arva</p>
-            <p>Email: <a href="mailto:">Anshitha's Email</a></p>
-            <p>Location: Calgary, Alberta, Canada</p>
-        </section>
+        <!-- This is where I used accordion to hide all the contact information unless the user clicks on it-->
+        <div id="accordion">
+            <h3>Contact Information</h3>
+            <div>
+                <p><strong>Name:</strong> Sri Anshitha Arva</p>
+                <p><strong>Email:</strong> <a href="mailto:anshitha.arva@example.com">Anshitha's Email</a></p>
+                <p><strong>Location:</strong> Alberta, Canada</p>
+            </div>
+        </div>
     </main>
 </body>
 

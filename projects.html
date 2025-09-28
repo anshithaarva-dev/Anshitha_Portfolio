@@ -5,94 +5,140 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects - Sri Anshitha Arva</title>
-    <link rel="stylesheet" href="styles\style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+     <!-- Css refrence -->
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> <!-- jQuery -->
+    <script src="scripts/sticky-nav.js"></script> <!-- Sticky nav bar-->
+  
+    <script src="https://unpkg.com/sv443-joke-api@0.0.8/web/index.js"></script>  <!-- JokeAPI  -->
+    <script>
+        // https://github.com/sahithyandev/sv443-joke-api-js-wrapper?tab=readme-ov-file#readme
+        //https://codepen.io/sahith27/pen/QWEPwPg
+        //Code from both of these sources were used to create this joke api requrest
+        JokeAPI.getJokes()
+            .then((res) => res.json())
+            .then((data) => {
+                document.getElementById('joke-container').innerHTML = `
+                    <div class="joke-container">
+                        <h3>Daily Joke 😄</h3>
+                        <p class="joke-text">${data.joke || data.setup + ' ' + data.delivery}</p>
+                    </div>
+                `;
+            });
+        // Function to show the RadiantYou demo iframe
+        function showRadiantYouDemo() {
+            var frame = document.getElementById('radiantYouFrame');
+            if (frame.style.display === 'none') {
+                frame.style.display = 'block';
+            } else {
+                frame.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Sri. Arva</li>
-                <div class="nav-buttons">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Sri. Arva</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="skills.html">Skills</a></li>
                     <li><a href="resume.pdf" download>Resume</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                </div>
-            </ul>
-        </nav>
-    </header>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <!-- Need to add a proper icon -->
+                    <li><button id="mode-button" class="modeToggle"></button></li>
+                </ul>
+            </nav>
+        </header>
+
+    <section id="joke-container" class="joke-section">
+        <!-- This gets populated by the joke API script -->
+    </section>
 
     <main>
         <section>
             <h2>My Projects</h2>
-            <p>Here are some of the projects I have worked on:</p>
+            <p>Here's a collection of projects I've worked on - from data analysis to full-stack applications. 
+               Always learning something new with each one!</p>
         </section>
 
+        <!-- Data visualization projects -->
         <section>
-            <h3>Data Analysis Projects</h3>
-            
+            <h3>Data Analysis & Visualization</h3>
             <article id="iphone16">
-                <h4>iPhone 16 Review Analysis</h4>
-                <p>I analyzed YouTube comments about iPhone 16 Pro using Python. I used VADER sentiment analysis to see how people felt about the phone. I also used topic modeling and clustering to find out what people were talking about most. I made visualizations in Tableau to show the results.</p>
-                <a href="https://www.kaggle.com/code/abivansharva/iphone-16-release-analysis-based-on-yt-video-comme" target="_blank" class="button">See Project</a>
+                <h4>iPhone 16 Review Analysis Based on YouTube Comments</h4>
+                <p>Analyzed public reception of the iPhone 16 Pro by scraping and preprocessing YouTube comments using
+                    Python. Applied VADER sentiment analysis to classify viewer sentiment and used topic modeling (LDA) and
+                    clustering (Sentence-BERT) to identify key discussion themes. Visualized results with Tableau to uncover
+                    consumer sentiment trends and product perception insights. Really interesting to see how people 
+                    actually felt about the new features!</p>
             </article>
-
+            
             <article id="tourism">
                 <h4>Global Tourism Analysis</h4>
-                <p>I worked with UN Tourism data to analyze global tourism trends. I cleaned the data using Python and made charts to show what I found. I also used time-series forecasting to predict how tourism would recover after the pandemic. I found that international travel was coming back and sustainable tourism was growing.</p>
-                <a href="https://www.kaggle.com/code/abivansharva/global-tourism-trends-2015-2019-a-data-driven-a" target="_blank" class="button">See Project</a>
-            </article>
-
-            <article id="weather">
-                <h4>Weather Data Analysis</h4>
-                <p>I analyzed weather data from different cities to find patterns. I used Python pandas to clean the data and matplotlib to make graphs. I found that some cities have similar weather patterns and seasonal changes.</p>
-                <a href="#" class="button">See Project</a>
+                <p>Working with UN Tourism and the World Travel & Tourism Council datasets, I analyzed and explored
+                    global tourism patterns. Used Python for data cleansing and visualization, and also forecasted
+                    post-pandemic recovery trajectories using time-series forecasting models. Found some really
+                    interesting trends like the recovery of international travel, growing interest in sustainable tourism, 
+                    and how digitization is changing traveler behavior. Created interactive dashboards to present 
+                    findings for strategic tourism industry planning.</p>
             </article>
         </section>
 
+        <!-- Programming/development projects -->
         <section>
-            <h3>Web Development Projects</h3>
+            <h3>Programming Applications</h3>
+            <article id="RadiantYou">
+                <h4>RadiantYou</h4>
+                <p>Developed an AI-powered application that bridges the gap between customers and beauty brands by
+                    offering a virtual makeup assistant. The app provides realistic makeup previews and personalized
+                    product recommendations tailored to individual users. Built the backend using Python for data
+                    processing and analysis, with HTML, CSS, and JavaScript creating an interactive frontend.
+                    Focused on debugging, error handling, and code optimization to ensure reliable performance.
+                    This was a fun project combining AI with beauty tech!
+                </p>
+                <button onclick="showRadiantYouDemo()" class="button">View Demo</button>
+                <!-- Note: Couldn't get my actual project link to work due to security reasons, 
+                     so using Wikipedia as placeholder for now -->
+                <div id="radiantYouFrame" class="embedded-frame" style="display: none;">
+                    <iframe src="https://en.wikipedia.org/wiki/Main_Page" width="100%" height="600px" frameborder="0"> <!-- https://www.w3schools.com/tags/tag_iframe.ASP -->
+                    </iframe>
+                </div>
+            </article>
             
-            <article id="FormSenseAi">
-                <h4>FormSenseAI</h4>
-                <p>This is an AI app that helps people exercise correctly. It uses a camera to watch how you move and tells you if you're doing the exercise right. I used TensorFlow.js for the AI part and made the website with HTML, CSS, and JavaScript. I also added user accounts and login system.</p>
-                <a href="https://formsenseai-backend.onrender.com/index.html" target="_blank" class="button">See Project</a>
-            </article>
-
-            <article id="stocky">
-                <h4>Stocky - Stock Market Simulator</h4>
-                <p>This is a website where people can practice trading stocks without using real money. It uses real stock data and lets users create fake portfolios. I made the front end with HTML, CSS, and JavaScript. The back end uses Node.js and MongoDB to save user data.</p>
-                <a href="#" class="button">See Project</a>
-            </article>
-
-            <article id="portfolio">
-                <h4>Personal Portfolio Website</h4>
-                <p>This website you're looking at right now! I made it using HTML and CSS. I learned how to make navigation menus, organize content into sections, and style everything to look nice. It was my first time making a complete website.</p>
-                <a href="index.html" class="button">See Project</a>
+            <article id="Personal.Ai">
+                <h4>Personal.Ai</h4>
+                <p>
+                    Designed and managed AI-driven projects to enhance creative writing, business automation, and
+                    customer service workflows. Implemented ChatGPT integration and virtual assistants to improve 
+                    operational efficiency and client interactions. Developed client-facing solutions that streamline
+                    communication, automate repetitive tasks, and deliver actionable insights. Maintained detailed
+                    project roadmaps and conducted regular progress reviews to ensure alignment with client requirements,
+                    timelines, and measurable outcomes. AI is really changing how we approach workflow automation!
+                </p>
             </article>
         </section>
 
+        <!-- Future projects section -->
         <section>
-            <h3>Python Projects</h3>
+            <h3>Future Projects & Ideas</h3>
+            <p><em>Always working on something new! Here are some projects I'm planning or currently developing:</em></p>
             
-            <article id="calculatorApp">
-                <h4>Calculator App</h4>
-                <p>I made a simple calculator using Python. It can do basic math like addition, subtraction, multiplication, and division. I used tkinter to make a simple window with buttons. It was one of my first Python projects.</p>
-                <a href="#" class="button">See Project</a>
-            </article>
-
-            <article id="pass-gen">
-                <h4>Password Generator</h4>
-                <p>I created a program that generates random passwords. Users can choose how long they want the password to be and what characters to include (letters, numbers, symbols). I used Python's random module to make the passwords.</p>
-                <a href="#" class="button">See Project</a>
+            <article id="calculatorApp"> <!-- this was added for the sake of the project, will be removed after-->
+                <h4>Advanced Calculator Application</h4>
+                <p>Planning to build a scientific calculator with graphing capabilities using JavaScript and Canvas API. 
+                   Want to include features like equation solving, unit conversions, and maybe even some basic calculus 
+                   functions. Still in the planning phase but excited about this one!</p>
+                   <h3>Coming Soon....</h3>
             </article>
         </section>
     </main>
+    
+    <!-- Scripts loaded at bottom to ensure DOM is ready -->
+    <script src="scripts/dark-mode.js"></script> <!-- Dark mode -->
 </body>
 
 </html>
