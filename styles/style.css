@@ -1,229 +1,272 @@
-/* Theme colors... I think this should cover green + yellow vibes */
+/* Theme colors tweaked a little bit comapared to initial planning */
 :root {
-    --back-color: #f0fdf4;    /* light green */
-    --text-color: #14532d;    /* dark text */
-    --border-color: #22c55e;  /* greeny border */
-    --nav-bg: #fff;           /* just plain white */
-    --section-bg: #fefce8;    /* yellow background for sections */
-    --article-bg: rgba(254,252,232,0.9);  /* softish yellow */
-    --button-bg: #22c55e;  
-    --button-hover: #16a34a;
-    --joke-bg: #fef3c7;
-    --joke-border: #f59e0b;
-    --joke-text: #92400e;
-  }
-  
-  /* dark mode stuff, prob needs more tweaking */
-  .darkmode {
-    --back-color: black;
-    --text-color: #f0fdf4;  /* so text doesn’t vanish */
-    --border-color: #22c55e;
-    --nav-bg: black;
-    --section-bg: #1a1a1a;
-    --article-bg: rgba(0,0,0,0.8);
-    --button-bg: #22c55e;
-    --button-hover: #16a34a;
-    --joke-bg: #111;   /* went darker */
-    --joke-border: #f59e0b;
-    --joke-text: #fbbf24;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background: var(--back-color);
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 2;
-    margin: 0; /* I think we need this? */
-    padding: 0;
-  }
-  
-  
-  /* nav bar (kinda flexboxy) */
-  nav ul {
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    list-style: none;   /* I saw this on stackoverflow */
-    background: #fef3c7;
-    margin:20px;
-    padding:15px;
-    border-radius:10px;
-    border:1px solid var(--border-color);
-    box-shadow: 0px 4px 6px gray; /* maybe too strong? */
-  }
-  
-  nav ul li {
-    margin:10px;   /* not sure about spacing */
-  }
-  
-  nav ul li a {
-    color: var(--text-color);
-    text-decoration:none;
-    padding:10px;
-    border-radius:4px;
-  }
-  
-  nav ul li:first-child {
-    font-size: 2.5em; /* looks kinda big but I like it */
-    flex-grow: 1;
-  }
-  
-  .nav-buttons {
-    display: flex;
-    gap: 15px; /* easier than margin lol */
-  }
-  
-  nav ul li a:hover {
-    background-color: #fff;  /* simple hover */
-  }
-  
-  /* dark nav */
-  .darkmode nav ul {
-    background:black;
-    border:1px solid var(--border-color);
-  }
-  
-  
-  /* Buttons (I reused for links and actual buttons) */
-  .button {
-    background: var(--button-bg);
-    color: white;  /* forced white so it shows */
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius:6px;
-  }
-  
-  .button:hover {
-    background: var(--button-hover);
-  }
-  
-  /* Sections... kinda like content blocks */
-  section {
-    background: var(--section-bg);
-    padding:20px;
-    margin:20px auto;
-    width:90%;
-    max-width:800px;
-    border-radius:8px;
-  }
-  
-  /* headings */
-  h1, h2 {
-    text-align:center;
-  }
-  h2 {
-    border-bottom:2px solid var(--border-color);
-    padding-bottom:8px;
-  }
-  
-  /* Articles inside sections */
-  article {
-    background: var(--article-bg);
-    padding:15px;
-    margin: 15px 0;
-    border-left: 5px solid var(--border-color);
-    border-right: 5px solid var(--border-color);
-    border-radius: 5px;
-  }
-  
-  /* banner thing at the top */
-  .main-section {
-    text-align:center;
-    background: var(--article-bg);
-    padding:25px;
-    border-radius: 10px;
-  }
-  
-  .main-section-img img {
-    width:100%;
-    max-width:300px;
-    height:auto;
-    border-radius:50%;
-  }
-  
-  /* forms, just winging it */
-  form input, form textarea {
-    width:100%;
-    padding:12px;
-    border:3px solid gray;  /* too thick maybe */
-    border-radius:6px;
-    margin-bottom:10px;
-    font-size:16px;
-  }
-  
-  form input:hover, form textarea:hover {
-    border-color: var(--border-color);
-  }
-  
-  .error-message {
-    color:red;
-    font-size:14px;
-  }
-  
-  /* reset button (different color) */
-  button[type="reset"] {
-    background:#999;
-    color:white;
-    border:none;
-    padding:8px 12px;
-  }
-  button[type="reset"]:hover {
-    background:#777;
-  }
-  
-  /* toggle for dark/light */
-  .modeToggle {
-    background: var(--section-bg);
-    color: var(--text-color);
-    padding: 8px;
-    border:2px solid var(--border-color);
-    border-radius:4px;
-  }
-  
-  /* Reviews (looks kinda like article) */
-  .review-card {
-    background: var(--article-bg);
-    border-left: 5px solid var(--border-color);
-    border-right: 5px solid var(--border-color);
-    margin:10px 0;
-    padding:15px;
-  }
-  
-  /* jokes area */
-  .joke-container {
-    background: var(--joke-bg);
-    border: 2px solid var(--joke-border);
-    padding:20px;
-    margin:20px auto;
-    border-radius:8px;
-    text-align:center;
-  }
-  
-  .joke-container h3 {
-    color: var(--joke-text);
-  }
-  
-  .joke-text {
-    color: var(--joke-text);
-    font-style: italic;
-  }
-  
-  #accordion h3 {
-    background: var(--article-bg);
-    border:2px solid var(--border-color);
-    padding:10px;
-    margin:5px 0;
-    cursor:pointer;
-  }
-  
-  #accordion div {
-    background: var(--section-bg);
-    border:2px solid var(--border-color);
-    border-top:none;
-    padding:15px;
-  }
-  
+  --back-color: #c1ddc9;
+  --text-color: #14532d;
+  --border-color: #2cb45e;
+  --section-bg: #fefce8;
+  --article-bg: rgba(254, 252, 232, 0.9);
+  --joke-bg: #fef3c7;
+  --joke-border: #cca561;
+  --joke-text: #1d1007;
+}
+
+/* dark mode */
+.darkmode {
+  --back-color: rgba(0, 0, 0, 0.753);
+  --text-color: #f0fdf4;
+  --border-color: #2cb45e;
+  --section-bg: #1a1a1a7c;
+  --article-bg: #1a1a1a7c;
+  --joke-bg: #111111be;
+  --joke-border: #cca561;
+  --joke-text: #fbbf24;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--back-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 2;
+  /* double spacing*/
+}
+
+
+/* nav bar */
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  /*removing the blue links*/
+  background: #fef3c7;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+nav ul li {
+  margin: 15px;
+}
+
+nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  /*remove the blue links*/
+  padding: 10px;
+  border-radius: 4px;
+}
+
+nav ul li:first-child {
+  /* for my name*/
+  font-size: 2.5em;
+  flex-grow: 2;
+}
+
+/* highlighting for hover*/
+nav ul li a:hover {
+  background-color: #a7b0b6;
+}
+
+/* Dark mode for the nav bar */
+.darkmode nav ul {
+  background: black;
+  border: 1px solid var(--border-color);
+}
+
+.button:hover {
+  background: var(--button-hover);
+}
+
+/* Sections... kinda like content blocks */
+section {
+  background: var(--section-bg);
+  padding: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 8px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h2 {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+/* Articles inside sections */
+article {
+  background: var(--article-bg);
+  padding: 15px;
+  margin: 15px;
+  border-left: 5px solid var(--border-color);
+  border-right: 5px solid var(--border-color);
+  border-radius: 5px;
+}
+
+/* main section box needs to be centered  */
+.main-section {
+  text-align: center;
+  background: var(--article-bg);
+  padding: 25px;
+  border-radius: 10px;
+  /*curved edges: https://www.w3schools.com/css/css3_borders.asp*/
+}
+
+/*mru image*/
+.main-section-img img {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+}
+
+/* For the forms*/
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+/* Form groups for better organization */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group h4 {
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Form buttons */
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.submit-buttom,
+.clear-buttom {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-buttom {
+  background-color: var(--border-color);
+  color: white;
+}
+
+.submit-buttom:hover {
+  background-color: #22a04a;
+  transform: translateY(-1px);
+}
+
+.clear-buttom {
+  background-color: #6b7280;
+  color: white;
+}
+
+.clear-buttom:hover {
+  background-color: #4b5563;
+  transform: translateY(-1px);
+}
+
+.error-message {
+  color: red;
+}
+
+
+/* switch to light and dark */
+.modeToggle {
+  background: var(--section-bg);
+  color: var(--text-color);
+  padding: 8px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+}
+
+/* This is for the added reviews*/
+.review-card {
+  background: var(--article-bg);
+  border-left: 5px solid var(--border-color);
+  border-right: 5px solid var(--border-color);
+  margin: 10px 0;
+  padding: 15px;
+}
+
+/* User review block */
+.user-review {
+  background: var(--article-bg);
+  border-left: 5px solid var(--border-color);
+  border-right: 5px solid var(--border-color);
+  margin: 15px 0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-review h4 {
+  margin-bottom: 8px;
+  color: black;
+  font-size: 18px;
+}
+
+.user-review p {
+  color: var(--text-color);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* jokes to set the color */
+.joke-container {
+  background: var(--joke-bg);
+  border: 2px solid var(--joke-border);
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.joke-container h3 {
+  color: var(--joke-text);
+}
+
+.joke-text {
+  color: var(--joke-text);
+  font-style: italic;
+}
+
+/*accordion css styling */
+
+#accordion h3 {
+  background: var(--article-bg);
+  border: 2px solid var(--border-color);
+  padding: 10px;
+  margin: 5px;
+}
+
+#accordion div {
+  background: var(--section-bg);
+  border: 2px solid var(--border-color);
+  padding: 15px;
+}
